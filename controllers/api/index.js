@@ -2,7 +2,9 @@
 const router = require('express').Router();
 
 const userControllers = require('./user-routes');
+const postControllers = require('./post-routes');
 
 router.use('/users', userControllers);
+router.use('/posts', postControllers);
 
 module.exports = router;

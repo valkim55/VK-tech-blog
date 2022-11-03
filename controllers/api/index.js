@@ -3,8 +3,10 @@ const router = require('express').Router();
 
 const userControllers = require('./user-routes');
 const postControllers = require('./post-routes');
+const commentControllers = require('./comment-routes');
 
 router.use('/users', userControllers);
 router.use('/posts', postControllers);
+router.use('/comments', commentControllers);
 
 module.exports = router;

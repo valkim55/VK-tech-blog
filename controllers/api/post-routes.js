@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Post, User} = require('../../models');
+const {Post, User, Comment} = require('../../models');
 
 // ===== GET all posts =====
 router.get('/', (req, res) => {
@@ -9,7 +9,12 @@ router.get('/', (req, res) => {
         attributes: ['id', 'title', 'contents', 'created_at'],
         // JOIN user ON 'username' WHERE user.id = post.user_id. include is expressed as an array of objects since it can reference multiple models
         include: [ 
-            { model: User, attributes: ['username'] } 
+            { model: User, attributes: ['username'] },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: { model: User, attributes: ['username'] }
+            }
         ] 
     }).then(dbPostData => {
         return res.json(dbPostData);
@@ -26,7 +31,14 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         attributes: ['id', 'title', 'contents', 'created_at'],
-        include: [{ model: User, attributes: ['username'] }]
+        include: [
+            { model: User, attributes: ['username'] },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: { model: User, attributes: ['username'] }
+            }
+        ]
     }).then(dbPostData => {
         if(!dbPostData) {
             res.status(400).json({message: 'no posts found with this id'});

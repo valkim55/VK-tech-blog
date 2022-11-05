@@ -8,7 +8,7 @@
     </div>
 
     <div class="meta">
-        By {{user.username}} on {{created_at}}
+        By {{user.first_name}} {{user.last_name}} (username: {{user.username}}) on {{format_date created_at}}
         <a href="/post/{{id}}">see comments {{comments.length}}</a>
     </div>
 </article>

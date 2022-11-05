@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Tech Blog</title>
-    {{!-- <link rel="stylesheet" href="/stylesheets/style.css"> --}}
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
     <div class="wrapper">
@@ -14,10 +14,10 @@
             </h1>
             <nav>
                 {{#if loggedIn}}
-                <a href="/dashboard">dashboard</a>
-                <button id="logout" class="btn-no-style">logout</button>
+                <button class="button-nav"><a href="/dashboard">dashboard</a></button>
+                <button id="logout" class="button-nav">logout</button>
                 {{else}}
-                <a href="/login">login</a>
+                <button class="button-nav"><a href="/login">login</a></button>
                 {{/if}}
             </nav>
         </header>

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {Post, User, Comment} = require('../../models');
+const authorizedUser = require('../../utils/auth');
 
 // ===== GET all posts =====
 router.get('/', (req, res) => {
@@ -52,11 +53,11 @@ router.get('/:id', (req, res) => {
 });
 
 // ===== POST a new post =====
-router.post('/', (req, res) => {
+router.post('/', authorizedUser, (req, res) => {
     Post.create({
         title: req.body.title,
         contents: req.body.contents,
-        user_id: req.body.user_id 
+        user_id: req.session.user_id 
     }).then(dbPostData => res.json(dbPostData))
       .catch(err => {
         console.log(err);
@@ -65,7 +66,7 @@ router.post('/', (req, res) => {
 });
 
 // ===== UPDATE a post's title =====
-router.put('/:id', (req, res) => {
+router.put('/:id', authorizedUser, (req, res) => {
     // because you're updating an already existing entry, you need to first retrieve the post instance by id and then alter the value of the title
     Post.update({
         title: req.body.title,
@@ -88,7 +89,7 @@ router.put('/:id', (req, res) => {
 });
 
 // ===== DELETE an instance of a post ======
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authorizedUser, (req, res) => {
     Post.destroy({
         where: {id: req.params.id}
     }).then(dbPostData => {

@@ -17,6 +17,7 @@ async function signupFormHandler(event) {
         });
         if(response.ok) {
             console.log('success');
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
@@ -39,7 +40,8 @@ async function loginFormHandler(event) {
         });
         if(response.ok) {
             //once the user is successfully logged in they're redirected to the homepage
-            document.location.replace('/');
+            document.location.replace('/dashboard');
+            console.log('logged in');
         } else {
             alert(response.statusText);
         }

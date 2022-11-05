@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
             },
             {
                 model: User,
-                attributes: ['username']
+                attributes: ['first_name', 'last_name', 'username']
             }
         ]
     }).then(dbPostData => {

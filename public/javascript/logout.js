@@ -5,7 +5,7 @@ async function logout() {
     });
 
     if(response.ok) {
-        console.log('user logged out, session closed');
+        //console.log('user logged out, session closed');
         document.location.replace('/');
     } else {
         alert(response.statusText);

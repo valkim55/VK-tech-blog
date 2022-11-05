@@ -1,15 +1,19 @@
-<article class="post">
-            <div class="title">
-                <a href="/post/{{post.id}}" target="_blank">{{post.title}}</a>
-            </div>
+{{> single-post post }}
 
-            <div class="contents">
-                <p>{{post.contents}}</p>
-            </div>
+{{#if loggedIn}}
+<form class="comment-form">
+    <div>
+        <textarea name="comment-body"></textarea>
+    </div>
 
-            <div class="meta">
-                By {{post.user.username}} on {{post.created_at}}
-                <a href="/post/{{post.id}}">see comments {{post.comments.length}}</a>
-            </div>
+    <div>
+        <button type="submit">add comment</button>
+    </div>
+</form>
+{{/if}}
 
-        </article>
+{{> comments-only post.comments}}
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}

@@ -3,22 +3,8 @@
     {{#each posts as |post|}}
     <li>
         <!-- since single-post and homepage pages had the same <article> element, you  used post-info partial template to place that <article> element and now yo simply 'call' it here instead of repeating the code-->
-        {{!-- {{> post-info post }} --}}
-        <article class="post">
-            <div class="title">
-                <a href="/post/{{id}}" target="_blank">{{title}}</a>
-            </div>
-
-            <div class="contents">
-                <p>{{contents}}</p>
-            </div>
-
-            <div class="meta">
-                By {{user.username}} on {{created_at}}
-                <a href="/post/{{id}}">see comments {{comments.length}}</a>
-            </div>
-
-        </article>
+        {{> single-post post }}
+        
     </li>
     {{/each}}
 </ul>

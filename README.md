@@ -5,7 +5,7 @@
 ### Navigation
  
 - [**Description**](#description)
-- [**Sample screenshots**](#screenshots)
+- [**Sample screenshots**](#sample)
 - [**Contact Info**](#contacts)
 <br/><br/>
 > ### **Application Description**
